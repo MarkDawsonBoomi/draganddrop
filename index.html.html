@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentstudio Mini-lab: Customer Support Insights</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #0066cc;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .intro {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #0066cc;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0066cc;
+        }
+        
+        .collapsible {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .collapsible-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            transition: background 0.2s;
+        }
+        
+        .collapsible-header:hover {
+            background: #e9ecef;
+        }
+        
+        .collapsible-header h3 {
+            font-size: 18px;
+            color: #333;
+            margin: 0;
+        }
+        
+        .toggle-icon {
+            font-size: 20px;
+            color: #666;
+            transition: transform 0.3s;
+        }
+        
+        .collapsible.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .collapsible.active .collapsible-content {
+            max-height: 5000px;
+        }
+        
+        .content-inner {
+            padding: 20px;
+            background: white;
+        }
+        
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            white-space: pre;
+        }
+        
+        .copy-btn {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+        
+        .copy-btn:hover {
+            background: #0052a3;
+        }
+        
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        
+        .instruction-step {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .instruction-step ul {
+            margin-left: 25px;
+            margin-top: 8px;
+        }
+        
+        .instruction-step li {
+            margin-bottom: 8px;
+        }
+        
+        .copy-value {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f8ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #0066cc;
+        }
+        
+        .inline-copy-btn {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 2px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.2s;
+        }
+        
+        .inline-copy-btn:hover {
+            background: #0052a3;
+        }
+        
+        .inline-copy-btn.copied {
+            background: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agentstudio Mini-lab: Customer Support Insights</h1>
+        <div class="intro">
+            <p><strong>Note:</strong> Copying sensitive code blocks from PDF files can often be problematic. For the purposes of this lab you may safely copy/paste from the snippets below as directed in the lab guide.</p>
+        </div>
+
+        <!-- CODE SNIPPETS SECTION -->
+        <h2 class="section-title">Code Snippets</h2>
+
+        <div class="collapsible active">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Snippet #1: Mock Product Payload</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="code-block">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Record createdDate="2025-06-25T21:28:38Z" recordId="6dfaf69a-d01f-44c5-a6ca-aab62736b126" updatedDate="2025-06-26T04:07:24Z"&gt;
+    &lt;Fields&gt;
+        &lt;productcatalog&gt;
+            &lt;description&gt;High-performance outboard engine designed for speed and efficiency on the water.&lt;/description&gt;
+            &lt;n&gt;TurboWave 3000&lt;/n&gt;
+            &lt;productCode&gt;FP-2100-GRD&lt;/productCode&gt;
+            &lt;faq&gt;Q: What is the fuel efficiency of the TurboWave 3000? A: The engine offers up to 25% better fuel efficiency compared to traditional models. Q: What is the maximum horsepower? A: The TurboWave 3000 delivers up to 300 HP.&lt;/faq&gt;
+            &lt;info&gt;The TurboWave 3000 features a lightweight design, advanced fuel injection technology, and a corrosion-resistant exterior, making it perfect for both recreational and professional boating.&lt;/info&gt;
+            &lt;compatibleParts&gt;
+                &lt;compatiblePart&gt;
+                    &lt;code&gt;FP-2200-PRO&lt;/code&gt;
+                &lt;/compatiblePart&gt;
+                &lt;compatiblePart&gt;
+                    &lt;code&gt;FP-2200-FLT&lt;/code&gt;
+                &lt;/compatiblePart&gt;
+                &lt;compatiblePart&gt;
+                    &lt;code&gt;FP-2200-IGN&lt;/code&gt;
+                &lt;/compatiblePart&gt;
+            &lt;/compatibleParts&gt;
+        &lt;/productcatalog&gt;
+    &lt;/Fields&gt;
+&lt;/Record&gt;</div>
+                    <button class="copy-btn" onclick="copyCode(this, 'snippet1')">Copy Code</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Snippet #2: Simulated CRM Update Operation</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="code-block">DPP_CASE_ID: {1}
+DPP_CASE_COMMENT: {2}</div>
+                    <button class="copy-btn" onclick="copyCode(this, 'snippet2')">Copy Code</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Snippet #3: Mock Support Case with Agent Prompt</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="code-block">You will be provided with a CRM customer support case in XML format. Please do the following:
+1. Research the support case issue.
+2. Generate a proposed response to the customer who submitted the support case.
+3. Update the support case with comment using the proposed response to the support case by passing in the support Case ID and Case Comment as parameters.
+
+Case XML:
+&lt;records type="Case" url="/services/data/v50.0/sobjects/Case/500bm00000ccB6LAAU"&gt;
+    &lt;Id&gt;500bm00000ccB6LAAU&lt;/Id&gt;
+    &lt;IsDeleted&gt;false&lt;/IsDeleted&gt;
+    &lt;CaseNumber&gt;00001002&lt;/CaseNumber&gt;
+    &lt;ContactId&gt;003bm00000HIRGCAA5&lt;/ContactId&gt;
+    &lt;AccountId&gt;001bm00000jwz69AAA&lt;/AccountId&gt;
+    &lt;Status&gt;New&lt;/Status&gt;
+    &lt;Reason&gt;Installation&lt;/Reason&gt;
+    &lt;Origin&gt;Web&lt;/Origin&gt;
+    &lt;Subject&gt;What are compatible parts for product code: FP-2100-GRD?&lt;/Subject&gt;
+    &lt;Priority&gt;Low&lt;/Priority&gt;
+    &lt;IsClosed&gt;false&lt;/IsClosed&gt;
+    &lt;IsEscalated&gt;false&lt;/IsEscalated&gt;
+    &lt;OwnerId&gt;005bm00000B2oVTAZ&lt;/OwnerId&gt;
+    &lt;CreatedDate&gt;2025-01-29T18:15:49.000Z&lt;/CreatedDate&gt;
+    &lt;CreatedById&gt;005bm00000B2oVTAZ&lt;/CreatedById&gt;
+    &lt;LastModifiedDate&gt;2025-01-30T18:02:12.000Z&lt;/LastModifiedDate&gt;
+    &lt;LastModifiedById&gt;005bm00000B2oVTAZ&lt;/LastModifiedById&gt;
+    &lt;SystemModstamp&gt;2025-01-30T18:02:12.000Z&lt;/SystemModstamp&gt;
+    &lt;ContactPhone&gt;(212) 842-5500&lt;/ContactPhone&gt;
+    &lt;ContactMobile&gt;(212) 842-5501&lt;/ContactMobile&gt;
+    &lt;ContactEmail&gt;spavalova@uog.com&lt;/ContactEmail&gt;
+    &lt;ContactFax&gt;(212) 842-5501&lt;/ContactFax&gt;
+    &lt;LastViewedDate&gt;2025-01-30T18:02:12.000Z&lt;/LastViewedDate&gt;
+&lt;/records&gt;</div>
+                    <button class="copy-btn" onclick="copyCode(this, 'snippet3')">Copy Code</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Snippet #4: Search and Replace RegEx</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="code-block">[\s\S]*event: message\n.*\"content\":\s?\"(.*)\", \"timestamp\"[\s\S]*</div>
+                    <button class="copy-btn" onclick="copyCode(this, 'snippet4')">Copy Code</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Snippet #5: Search and Replace Extra</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="code-block">\\r\\n|\\r|\\n</div>
+                    <button class="copy-btn" onclick="copyCode(this, 'snippet5')">Copy Code</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- INSTRUCTIONS SECTION -->
+        <h2 class="section-title">Lab Instructions</h2>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Create New Tool (API Tool)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p>1. Add Tool type: <strong>API Tool</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>2. Tool name: <span class="copy-value">Get Product Info by Code <button class="inline-copy-btn" onclick="copyInline(this, 'Get Product Info by Code')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>3. Description: <span class="copy-value">Get Product Info by Product Code <button class="inline-copy-btn" onclick="copyInline(this, 'Get Product Info by Product Code')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>4. Add Input Parameter:</p>
+                        <ul>
+                            <li>Name: <span class="copy-value">Product Code <button class="inline-copy-btn" onclick="copyInline(this, 'Product Code')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">The Product Code <button class="inline-copy-btn" onclick="copyInline(this, 'The Product Code')">Copy</button></span></li>
+                            <li>Type: <strong>String</strong></li>
+                            <li>Required: <strong>true</strong></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>5. Select <strong>Save and Continue</strong> to move to the Configuration section:</p>
+                        <ul>
+                            <li>Select <strong>Add Manually</strong></li>
+                            <li>Endpoint Base URL: <em>{Base URL you copied and labelled as web listener}</em></li>
+                            <li>Method: <strong>GET</strong></li>
+                            <li>Endpoint Path: <span class="copy-value">/ws/simple/getProduct <button class="inline-copy-btn" onclick="copyInline(this, '/ws/simple/getProduct')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Add Query Parameter:</p>
+                        <ul>
+                            <li>Name: <span class="copy-value">productCode <button class="inline-copy-btn" onclick="copyInline(this, 'productCode')">Copy</button></span></li>
+                            <li>Value: Click the Text Box and Select the <strong>{{Product Code}}</strong> input parameter already defined</li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <ul>
+                            <li>Authentication: <strong>Basic Authentication</strong></li>
+                            <li>Username: <em>{webserver username}</em></li>
+                            <li>Password: <em>{webserver token}</em></li>
+                            <li>Request Type: <strong>None</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Create New Agent</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p>1. Start with a <strong>Blank Template</strong> → <em>I will add manually.</em></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>2. Profile:</p>
+                        <ul>
+                            <li>Goal: <span class="copy-value">Customer support assistant to answer support case questions about our products. <button class="inline-copy-btn" onclick="copyInline(this, 'Customer support assistant to answer support case questions about our products.')">Copy</button></span></li>
+                            <li>Agent Name: <span class="copy-value">CustomerSupportAgent <button class="inline-copy-btn" onclick="copyInline(this, 'CustomerSupportAgent')">Copy</button></span></li>
+                            <li>Quick Inference: <em>Leave off</em></li>
+                            <li>Voice: <strong>Professional</strong></li>
+                            <li>Conversation Starter: <span class="copy-value">Tell me about the FP-2100-GRD <button class="inline-copy-btn" onclick="copyInline(this, 'Tell me about the FP-2100-GRD')">Copy</button></span></li>
+                            <li>Add another starter: <span class="copy-value">Define compatible parts with product code: FP-2100-GRD <button class="inline-copy-btn" onclick="copyInline(this, 'Define compatible parts with product code: FP-2100-GRD')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>3. Select <strong>Save and Continue</strong>, then add two Tasks:</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>4. Task Name: <span class="copy-value">Research a case by retrieving product info <button class="inline-copy-btn" onclick="copyInline(this, 'Research a case by retrieving product info')">Copy</button></span></p>
+                        <ul>
+                            <li>Description: <span class="copy-value">A question will be asked about a product. Research the case by querying for product information <button class="inline-copy-btn" onclick="copyInline(this, 'A question will be asked about a product. Research the case by querying for product information')">Copy</button></span></li>
+                            <li>Leave <em>instructions</em> empty</li>
+                            <li>Add tool: <span class="copy-value">Get Product Info by Code (API Tool) <button class="inline-copy-btn" onclick="copyInline(this, 'Get Product Info by Code')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p><strong>Add New Task</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>2. Task Name: <span class="copy-value">Generate proposed response or resolution <button class="inline-copy-btn" onclick="copyInline(this, 'Generate proposed response or resolution')">Copy</button></span></p>
+                        <ul>
+                            <li>Description: <span class="copy-value">Using the product information retrieved, generate a draft or proposed resolution or response to the customer support case. <button class="inline-copy-btn" onclick="copyInline(this, 'Using the product information retrieved, generate a draft or proposed resolution or response to the customer support case.')">Copy</button></span></li>
+                            <li>Instructions: <button class="copy-btn" onclick="copyMultiline(this)">Copy Instructions</button></li>
+                        </ul>
+                        <div class="code-block" style="margin-top: 10px;">a. Using the product information retrieved, generate a draft or proposed resolution or response to the customer support case.
+b. Format the response using the following template:
+Dear <customer name>,
+<proposed resolution>
+Thank you, Acme, Inc.</div>
+                        <ul>
+                            <li>Leave <em>tools</em> empty</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Add Guardrails</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p>1. Set Blocked message: <span class="copy-value">I'm sorry. I can only help with product-related questions. <button class="inline-copy-btn" onclick="copyInline(this, `I'm sorry. I can only help with product-related questions.`)">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>2. Add Denied Topic:</p>
+                        <ul>
+                            <li>Name: <span class="copy-value">Internal pricing <button class="inline-copy-btn" onclick="copyInline(this, 'Internal pricing')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">Do not disclose internal pricing or costs <button class="inline-copy-btn" onclick="copyInline(this, 'Do not disclose internal pricing or costs')">Copy</button></span></li>
+                            <li>Add Sample Phrase: <span class="copy-value">How much does the part cost the company to produce? <button class="inline-copy-btn" onclick="copyInline(this, 'How much does the part cost the company to produce?')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>3. Save the agent.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>4. Test the guardrail with the following prompt: <span class="copy-value">What does it cost to produce the FP-2100-GRD? <button class="inline-copy-btn" onclick="copyInline(this, 'What does it cost to produce the FP-2100-GRD?')">Copy</button></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Create an Integration Tool</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p>4. Add Tool type: <strong>Integration Tool</strong></p>
+                        <ul>
+                            <li>Tool name: <span class="copy-value">Update Case with Comment <button class="inline-copy-btn" onclick="copyInline(this, 'Update Case with Comment')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">Update the support case with a new comment. <button class="inline-copy-btn" onclick="copyInline(this, 'Update the support case with a new comment.')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>5. Add Input Parameter:</p>
+                        <ul>
+                            <li>Name: <span class="copy-value">Case ID <button class="inline-copy-btn" onclick="copyInline(this, 'Case ID')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">The Case ID <button class="inline-copy-btn" onclick="copyInline(this, 'The Case ID')">Copy</button></span></li>
+                            <li>Type: <strong>String</strong></li>
+                            <li>Required: <strong>true</strong></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>6. Add Input Parameter:</p>
+                        <ul>
+                            <li>Name: <span class="copy-value">Case Comment <button class="inline-copy-btn" onclick="copyInline(this, 'Case Comment')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">The new case comment <button class="inline-copy-btn" onclick="copyInline(this, 'The new case comment')">Copy</button></span></li>
+                            <li>Type: <strong>String</strong></li>
+                            <li>Required: <strong>true</strong></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>7. Environment:</p>
+                        <ul>
+                            <li>Choose the Integration Environment and Runtime where you deployed the process in the previous section</li>
+                            <li>Choose the Process: <strong>Update Case with Comment</strong></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>8. Dynamic Process Properties:</p>
+                        <ul>
+                            <li>Add Dynamic Process Property:
+                                <ul>
+                                    <li>Name: <span class="copy-value">DPP_CASE_ID <button class="inline-copy-btn" onclick="copyInline(this, 'DPP_CASE_ID')">Copy</button></span></li>
+                                    <li>Value: <strong>{{Case ID}}</strong></li>
+                                </ul>
+                            </li>
+                            <li>Add Dynamic Process Property:
+                                <ul>
+                                    <li>Name: <span class="copy-value">DPP_CASE_COMMENT <button class="inline-copy-btn" onclick="copyInline(this, 'DPP_CASE_COMMENT')">Copy</button></span></li>
+                                    <li>Value: <strong>{{Case Comment}}</strong></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>9. <strong>Deploy</strong> the tool.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Add New Task (Update Case)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p>8. <strong>Add New Task</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>9. Open CustomerSupportAgent under the Agents menu and navigate to the Tasks tab.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>10. Add a new (third) task:</p>
+                        <ul>
+                            <li>Task Name: <span class="copy-value">Update Case with Comment <button class="inline-copy-btn" onclick="copyInline(this, 'Update Case with Comment')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">Update the existing support case with a new comment for a given CRM Case ID. <button class="inline-copy-btn" onclick="copyInline(this, 'Update the existing support case with a new comment for a given CRM Case ID.')">Copy</button></span></li>
+                            <li>Leave <em>Instructions</em> empty</li>
+                            <li>Add Tool: <span class="copy-value">Update Case with Comment (Integration Tool) <button class="inline-copy-btn" onclick="copyInline(this, 'Update Case with Comment')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>11. Select <strong>Save</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Detect Sentiment (Prompt Tool)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p>Tool name: <span class="copy-value">Detect Sentiment <button class="inline-copy-btn" onclick="copyInline(this, 'Detect Sentiment')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Description: <span class="copy-value">Perform sentiment analysis on the customer support case provided. <button class="inline-copy-btn" onclick="copyInline(this, 'Perform sentiment analysis on the customer support case provided.')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Add Input Parameter:</p>
+                        <ul>
+                            <li>Name: <span class="copy-value">Support Case <button class="inline-copy-btn" onclick="copyInline(this, 'Support Case')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">Customer Support Case XML <button class="inline-copy-btn" onclick="copyInline(this, 'Customer Support Case XML')">Copy</button></span></li>
+                            <li>Type: <strong>String</strong></li>
+                            <li>Required: <strong>true</strong></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Add Prompt: <button class="copy-btn" onclick="copyMultiline(this)">Copy Prompt</button></p>
+                        <div class="code-block" style="margin-top: 10px;">Perform sentiment analysis on the customer support case provided (it is in XML format). Your response should be a single word response from the following case-sensitive sentiment options: negative, neutral, positive. Respond with all lowercase and do not include any commentary or punctuation in your response. The customer support case is as follows:</div>
+                        <p style="margin-top: 10px;"><em>At the end of the prompt copy/paste above, type { to see a list of Input Parameters and select the {{Support Case}} parameter to inject the case XML into the prompt.</em></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Add Example:</p>
+                        <ul>
+                            <li>Input: <span class="copy-value">Your product is amazing and I love everything about it. How can I become an investor? <button class="inline-copy-btn" onclick="copyInline(this, 'Your product is amazing and I love everything about it. How can I become an investor?')">Copy</button></span></li>
+                            <li>Output: <span class="copy-value">positive <button class="inline-copy-btn" onclick="copyInline(this, 'positive')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Deploy the tool.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Route by Sentiment (Integration Tool)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p>Add Tool type: <strong>Integration Tool</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Tool name: <span class="copy-value">Route by Sentiment Result <button class="inline-copy-btn" onclick="copyInline(this, 'Route by Sentiment Result')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Description: <span class="copy-value">Take the result of the sentiment analysis and process the result in Integration by routing based on negative, neutral, or positive. <button class="inline-copy-btn" onclick="copyInline(this, 'Take the result of the sentiment analysis and process the result in Integration by routing based on negative, neutral, or positive.')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Add Input Parameter:</p>
+                        <ul>
+                            <li>Name: <span class="copy-value">Case ID <button class="inline-copy-btn" onclick="copyInline(this, 'Case ID')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">The Case ID <button class="inline-copy-btn" onclick="copyInline(this, 'The Case ID')">Copy</button></span></li>
+                            <li>Type: <strong>String</strong></li>
+                            <li>Required: <strong>true</strong></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Add Input Parameter:</p>
+                        <ul>
+                            <li>Name: <span class="copy-value">Sentiment <button class="inline-copy-btn" onclick="copyInline(this, 'Sentiment')">Copy</button></span></li>
+                            <li>Description: <span class="copy-value">The result of the sentiment analysis (negative, neutral, or positive). <button class="inline-copy-btn" onclick="copyInline(this, 'The result of the sentiment analysis (negative, neutral, or positive).')">Copy</button></span></li>
+                            <li>Type: <strong>String</strong></li>
+                            <li>Required: <strong>true</strong></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Environment:</p>
+                        <ul>
+                            <li>Choose the Integration Environment and Runtime where you deployed the process in the previous section</li>
+                            <li>Choose the Process: <span class="copy-value">Route by Sentiment <button class="inline-copy-btn" onclick="copyInline(this, 'Route by Sentiment')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Dynamic Process Properties:</p>
+                        <ul>
+                            <li>Add Dynamic Process Property:
+                                <ul>
+                                    <li>Name: <span class="copy-value">DPP_CASE_ID <button class="inline-copy-btn" onclick="copyInline(this, 'DPP_CASE_ID')">Copy</button></span></li>
+                                    <li>Value: <strong>{{Case ID}}</strong></li>
+                                </ul>
+                            </li>
+                            <li>Add Dynamic Process Property:
+                                <ul>
+                                    <li>Name: <span class="copy-value">DPP_SENTIMENT <button class="inline-copy-btn" onclick="copyInline(this, 'DPP_SENTIMENT')">Copy</button></span></li>
+                                    <li>Value: <strong>{{Sentiment}}</strong></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Deploy the tool.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Add Sentiment Analysis Task</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p>Task Name: <span class="copy-value">Detect case sentiment and route accordingly <button class="inline-copy-btn" onclick="copyInline(this, 'Detect case sentiment and route accordingly')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Description: <span class="copy-value">Perform sentiment analysis and then route the case based on the results. <button class="inline-copy-btn" onclick="copyInline(this, 'Perform sentiment analysis and then route the case based on the results.')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Instructions: <button class="copy-btn" onclick="copyMultiline(this)">Copy Instructions</button></p>
+                        <div class="code-block" style="margin-top: 10px;">Perform sentiment analysis on the customer support case using the detect sentiment prompt tool provided.
+Route the case based on the result of the sentiment analysis by using the route tool provided.</div>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Add Tools:</p>
+                        <ul>
+                            <li><span class="copy-value">Detect Sentiment (Prompt Tool) <button class="inline-copy-btn" onclick="copyInline(this, 'Detect Sentiment')">Copy</button></span></li>
+                            <li><span class="copy-value">Route by Sentiment Result (Integration Tool) <button class="inline-copy-btn" onclick="copyInline(this, 'Route by Sentiment Result')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Select <strong>Save and Continue</strong> until the Review tab is reached, and select <strong>Deploy Agent</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Application Tool Agent</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p><strong>Create an agent</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>1. Navigate to Agentstudio and select: <strong>Create an agent</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>2. Select <strong>Blank Template</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>3. Goal: <span class="copy-value">When the user asks, add a short comment to a specific GitHub issue in a specific repository. <button class="inline-copy-btn" onclick="copyInline(this, 'When the user asks, add a short comment to a specific GitHub issue in a specific repository.')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>4. Agent Name: <span class="copy-value">GitComment Test <button class="inline-copy-btn" onclick="copyInline(this, 'GitComment Test')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>5. Quick inference: <strong>On</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>6. Voice: <strong>Friendly</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>7. Conversation Starter: <span class="copy-value">I'd like to post a comment on a GitHub issue. <button class="inline-copy-btn" onclick="copyInline(this, `I'd like to post a comment on a GitHub issue.`)">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>8. Select <strong>save and continue</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p><strong>Add New Task</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Name: <span class="copy-value">Post comments on GitHub issues <button class="inline-copy-btn" onclick="copyInline(this, 'Post comments on GitHub issues')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Task description: <span class="copy-value">Post a short comment to a specified GitHub issue, using the Git Comment application tool. <button class="inline-copy-btn" onclick="copyInline(this, 'Post a short comment to a specified GitHub issue, using the Git Comment application tool.')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Task instructions: <button class="copy-btn" onclick="copyMultiline(this)">Copy Instructions</button></p>
+                        <div class="code-block" style="margin-top: 10px;">When the user asks, post a short comment to a specific GitHub issue in a specific repository.
+
+Before using the tool, ensure you have all required inputs:
+1. owner/repo (format: &lt;owner&gt;/&lt;repo&gt;)
+2. issue number (positive integer)
+3. comment text (non-empty)
+
+If any required input is missing, ask concise follow-up questions to collect it.
+
+If anything is ambiguous (unclear repo, unclear issue number, unclear comment intent), ask one clarifying question.
+
+Validation rules:
+- owner must be a single org or username (no spaces).
+- repo must be a single repository name (no spaces).
+- issue number must be a positive integer.
+- If the issue number is not in 1–9999, explicitly confirm the number before proceeding.
+
+Execution rules:
+- Immediately before the tool call, state a one-sentence plan (e.g., "I'll post your comment to &lt;owner&gt;/&lt;repo&gt; issue #&lt;n&gt;.").
+- Call the Git Comment tool exactly once.
+- After success, respond with: Comment posted to &lt;owner&gt;/&lt;repo&gt; issue #&lt;n&gt;</div>
+                    </div>
+                    <div class="instruction-step">
+                        <p><strong>Add Guardrails</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Blocked message: <span class="copy-value">I am sorry, I am not allowed to perform that operation <button class="inline-copy-btn" onclick="copyInline(this, 'I am sorry, I am not allowed to perform that operation')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Select <strong>Add Denied Topics</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Name: <span class="copy-value">Credential/ Secret Sharing <button class="inline-copy-btn" onclick="copyInline(this, 'Credential/ Secret Sharing')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Description: <span class="copy-value">Requests to provide, share, paste, store, or generate passwords, API keys, OAuth codes, personal access tokens, or any secrets. <button class="inline-copy-btn" onclick="copyInline(this, 'Requests to provide, share, paste, store, or generate passwords, API keys, OAuth codes, personal access tokens, or any secrets.')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Sample phrases:</p>
+                        <ul>
+                            <li><span class="copy-value">what's my password? <button class="inline-copy-btn" onclick="copyInline(this, `what's my password?`)">Copy</button></span></li>
+                            <li><span class="copy-value">what token are you using? <button class="inline-copy-btn" onclick="copyInline(this, 'what token are you using?')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p><strong>Denied topic 2</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Name: <span class="copy-value">Non-GitHub comment operations <button class="inline-copy-btn" onclick="copyInline(this, 'Non-GitHub comment operations')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Description: <span class="copy-value">Requests to modify repos/issues beyond posting a comment (delete repos, change settings, merge PRs, manage permissions, etc.). <button class="inline-copy-btn" onclick="copyInline(this, 'Requests to modify repos/issues beyond posting a comment (delete repos, change settings, merge PRs, manage permissions, etc.).')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Sample Phrases:</p>
+                        <ul>
+                            <li><span class="copy-value">Delete this repo <button class="inline-copy-btn" onclick="copyInline(this, 'Delete this repo')">Copy</button></span></li>
+                            <li><span class="copy-value">Add me as admin <button class="inline-copy-btn" onclick="copyInline(this, 'Add me as admin')">Copy</button></span></li>
+                            <li><span class="copy-value">Merge this PR <button class="inline-copy-btn" onclick="copyInline(this, 'Merge this PR')">Copy</button></span></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>Question for Agent: <span class="copy-value">Please leave the comment 'git tool test hello' on issue #1 in the MarkDawsonBoomi/agentstudio-git-playground <button class="inline-copy-btn" onclick="copyInline(this, `Please leave the comment 'git tool test hello' on issue #1 in the MarkDawsonBoomi/agentstudio-git-playground`)">Copy</button></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>AWS MCP Lab</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="instruction-step">
+                        <p><strong>Connect to the AWS Knowledge MCP server</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>1. Navigate to <strong>Agent Garden > Sources > Create New Source > Model Context Protocol</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>2. Select <strong>Add Source</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>3. Name: <span class="copy-value">AWS Knowledge <button class="inline-copy-btn" onclick="copyInline(this, 'AWS Knowledge')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>4. Description: <span class="copy-value">A fully managed remote MCP server that provides up-to-date documentation, code samples, and other official AWS content. <button class="inline-copy-btn" onclick="copyInline(this, 'A fully managed remote MCP server that provides up-to-date documentation, code samples, and other official AWS content.')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>5. Select <strong>Streamable HTTP</strong> as the Transport Type.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>6. In the URL, enter: <span class="copy-value">https://knowledge-mcp.global.api.aws <button class="inline-copy-btn" onclick="copyInline(this, 'https://knowledge-mcp.global.api.aws')">Copy</button></span></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>7. Select <strong>None</strong> in Authentication.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>8. Select <strong>Test Connection</strong> to test the connection to the MCP server.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>9. Click <strong>Discover Tools</strong> to import tools.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>10. Select all three tools:</p>
+                        <ul>
+                            <li><strong>aws_read_documentation</strong></li>
+                            <li><strong>aws_recommend</strong></li>
+                            <li><strong>aws_search_documentation</strong></li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>11. Review and click <strong>Save</strong>. If you navigate to Tools, you'll notice your tools are already configured and ready to use.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p><strong>Step 2: Create and deploy your AWS Expert agent</strong></p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>1. Navigate to <strong>Agentstudio > Agent Garden > Agent Designer</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>2. Do one of the following:</p>
+                        <ul>
+                            <li>Import the <strong>AWS Expert</strong> agent using a YAML file. This imports all the settings for the agent, including personality, temperature, tasks, instructions, and guardrails.</li>
+                        </ul>
+                    </div>
+                    <div class="instruction-step">
+                        <p>1. Navigate to <strong>Agents</strong> and select the <strong>AWS Expert</strong> agent.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>2. Select <strong>Edit</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>3. Select <strong>Tasks</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>4. In the <strong>Documentation Search</strong> task select <strong>Manage Tools</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>5. Select <strong>Add New Tool</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>6. Select the three AWS tools (search, recommend, and read).</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>7. Select <strong>Add Tool</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>8. Select <strong>Save</strong>.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>9. Repeat steps 6-10 for each task.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>10. Select <strong>Save and Continue</strong> and continue to Review.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <p>11. Test your agent in the <strong>Test Agent</strong> window.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STRUCTURED AGENT TEST JSON SECTION -->
+        <h2 class="section-title">Test Data</h2>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <h3>Structured Agent Test JSON</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <div class="code-block">{
+    "customerId": "CUST1001",
+    "survey": {
+        "serviceSatisfaction": 2,
+        "easeOfResolution": 3,
+        "likelihoodToRecommend": 2,
+        "feedback": "The support person was polite but my issue is still unresolved."
+    }
+}</div>
+                    <button class="copy-btn" onclick="copyCode(this, 'snippet6')">Copy Code</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const snippets = {
+            'snippet1': `<?xml version="1.0" encoding="UTF-8"?>
+<Record createdDate="2025-06-25T21:28:38Z" recordId="6dfaf69a-d01f-44c5-a6ca-aab62736b126" updatedDate="2025-06-26T04:07:24Z">
+    <Fields>
+        <productcatalog>
+            <description>High-performance outboard engine designed for speed and efficiency on the water.</description>
+            <n>TurboWave 3000</n>
+            <productCode>FP-2100-GRD</productCode>
+            <faq>Q: What is the fuel efficiency of the TurboWave 3000? A: The engine offers up to 25% better fuel efficiency compared to traditional models. Q: What is the maximum horsepower? A: The TurboWave 3000 delivers up to 300 HP.</faq>
+            <info>The TurboWave 3000 features a lightweight design, advanced fuel injection technology, and a corrosion-resistant exterior, making it perfect for both recreational and professional boating.</info>
+            <compatibleParts>
+                <compatiblePart>
+                    <code>FP-2200-PRO</code>
+                </compatiblePart>
+                <compatiblePart>
+                    <code>FP-2200-FLT</code>
+                </compatiblePart>
+                <compatiblePart>
+                    <code>FP-2200-IGN</code>
+                </compatiblePart>
+            </compatibleParts>
+        </productcatalog>
+    </Fields>
+</Record>`,
+            'snippet2': `DPP_CASE_ID: {1}
+DPP_CASE_COMMENT: {2}`,
+            'snippet3': `You will be provided with a CRM customer support case in XML format. Please do the following:
+1. Research the support case issue.
+2. Generate a proposed response to the customer who submitted the support case.
+3. Update the support case with comment using the proposed response to the support case by passing in the support Case ID and Case Comment as parameters.
+
+Case XML:
+<records type="Case" url="/services/data/v50.0/sobjects/Case/500bm00000ccB6LAAU">
+    <Id>500bm00000ccB6LAAU</Id>
+    <IsDeleted>false</IsDeleted>
+    <CaseNumber>00001002</CaseNumber>
+    <ContactId>003bm00000HIRGCAA5</ContactId>
+    <AccountId>001bm00000jwz69AAA</AccountId>
+    <Status>New</Status>
+    <Reason>Installation</Reason>
+    <Origin>Web</Origin>
+    <Subject>What are compatible parts for product code: FP-2100-GRD?</Subject>
+    <Priority>Low</Priority>
+    <IsClosed>false</IsClosed>
+    <IsEscalated>false</IsEscalated>
+    <OwnerId>005bm00000B2oVTAZ</OwnerId>
+    <CreatedDate>2025-01-29T18:15:49.000Z</CreatedDate>
+    <CreatedById>005bm00000B2oVTAZ</CreatedById>
+    <LastModifiedDate>2025-01-30T18:02:12.000Z</LastModifiedDate>
+    <LastModifiedById>005bm00000B2oVTAZ</LastModifiedById>
+    <SystemModstamp>2025-01-30T18:02:12.000Z</SystemModstamp>
+    <ContactPhone>(212) 842-5500</ContactPhone>
+    <ContactMobile>(212) 842-5501</ContactMobile>
+    <ContactEmail>spavalova@uog.com</ContactEmail>
+    <ContactFax>(212) 842-5501</ContactFax>
+    <LastViewedDate>2025-01-30T18:02:12.000Z</LastViewedDate>
+</records>`,
+            'snippet4': `[\\s\\S]*event: message\\n.*\\"content\\":\\s?\\"(.*)\\"", \\"timestamp\\"[\\s\\S]*`,
+            'snippet5': `\\\\r\\\\n|\\\\r|\\\\n`,
+            'snippet6': `{
+    "customerId": "CUST1001",
+    "survey": {
+        "serviceSatisfaction": 2,
+        "easeOfResolution": 3,
+        "likelihoodToRecommend": 2,
+        "feedback": "The support person was polite but my issue is still unresolved."
+    }
+}`
+        };
+
+        function toggleCollapsible(header) {
+            const collapsible = header.parentElement;
+            collapsible.classList.toggle('active');
+        }
+
+        function copyCode(button, snippetId) {
+            const text = snippets[snippetId];
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function copyInline(button, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function copyMultiline(button) {
+            const codeBlock = button.parentElement.nextElementSibling;
+            const text = codeBlock.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Open first snippet by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstCollapsible = document.querySelector('.collapsible');
+            if (firstCollapsible) {
+                firstCollapsible.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
